@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer')
+require('dotenv').config()
+const { Password } = process.env
 
 const sendOTP = async (email, otp) => {
     try {
@@ -6,7 +8,7 @@ const sendOTP = async (email, otp) => {
             service: 'gmail',
             auth: {
                 user: 'syedshamsher9174@gmail.com',
-                pass: 'SYED@shamsher14'
+                pass: Password
             }
         })
         const mailOptions = {
