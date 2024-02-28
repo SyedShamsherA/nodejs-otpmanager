@@ -7,6 +7,9 @@ const signup = async(req, res) => {
         const { email, password } = req.body
         const hashedPassword = await bcrypt.hash(password, 10)
         const user = new User({ email, password: hashedPassword })
+        if (!email) {
+            return res.status(400).json({ error: 'Email is required' });
+          }
         await user.save()
         res.json({ message: 'User registered successfully' })
     } catch (error) {
